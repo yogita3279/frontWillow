@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset = "UTF-8" />
+</head>
+<h5 class="card-header info-color white-text text-center py-4">
+  <strong>Register your Home with Willow</strong>
+</h5>
+        <section>
+          <div class="card">
+            <div class="card-body px-lg-5 pt-0">
+
+        <div style="margin-top:5;" class="card-header">
+            <form  #homeRegister="ngForm" (ngSubmit)="onSubmit(homeRegister)" novalidate="novalidate">
+                <div class="form-row" >
+                  <div class="col-md-6 mb-3">
+                    <div class="form-group">
+                        <label for="sel1">Home-Type</label>
+                        <select [(value)]="option" (Onchange)="getSeletedOption()" class="form-control" id="sel1">
+                          <option *ngFor="let option of homeType" [value]="option">{{option}}</option>
+                         
+                        </select>
+
+                       
+                      </div>               
+                       </div>
+                       
+                       <div class="col-md-6 mb-3">
+                        <label for="validationDefault01">Price</label>
+                        <input [class.is-danger]="nameRef.dirty && nameRef.invalid"
+                        [(ngModel)]="price"  #nameRef="ngModel" name="price" type="number" class="form-control" id="validationDefault01" placeholder="price"  required>
+                        <div>	<p class="help is-danger">
+                          <span *ngIf="nameRef.dirty && nameRef.errors?.required">This field is required</span>&nbsp;
+                        </p></div>
+                      </div>
+                       <div class="col-md-3 mb-3">
+                        <label for="validationDefault02">ZipCode</label>
+                        <input [class.is-danger]="nameRef1.dirty && nameRef1.invalid"
+                        [(ngModel)]="zipcode"  #nameRef1="ngModel"  pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==6) return false" name="zipcode" type="number" class="form-control" id="validationDefault02" placeholder="Zip Code" required/>
+                        <div>	<p class="help is-danger">
+                          <span *ngIf="nameRef1.dirty && nameRef1.errors?.required">This field is required</span>&nbsp;
+                        </p></div>
+                      </div>
+                      <div class="col-md-3 mb-3">
+                        <label for="validationDefault03">Garage</label>
+                        <input [class.is-danger]="nameRef2.dirty && nameRef2.invalid"
+                        [(ngModel)]="garageSqft"  #nameRef2="ngModel" name="garageSqft" type="number" class="form-control" id="validationDefault03" placeholder="Garage" required/>
+                        <div>	<p class="help is-danger">
+                          <span *ngIf="nameRef2.dirty && nameRef2.errors?.required">This field is required</span>&nbsp;
+                        </p></div>
+                      </div>
+                      <div class="col-md-3 mb-3">
+                        <label for="validationDefault04">Basement Sq Ft</label>
+                        <input [class.is-danger]="nameRef3.dirty && nameRef3.invalid"
+                        [(ngModel)]="basementSqft"  #nameRef3="ngModel" name="basementSqft" type="number" class="form-control" id="validationDefault04" placeholder="basement" required/>
+                        <div>	<p class="help is-danger">
+                          <span *ngIf="nameRef3.dirty && nameRef3.errors?.required">This field is required</span>&nbsp;
+                        </p></div>
+                      </div>
+                      <div class="col-md-3 mb-3">
+                        <label for="validationDefault05">Finished Sq Ft</label>
+                        <input [class.is-danger]="nameRef4.dirty && nameRef4.invalid"
+                        [(ngModel)]="finishedSqft"  #nameRef4="ngModel" name="finishedSqft" type="number" class="form-control" id="validationDefault05" placeholder="finished" required/>
+                        <div>	<p class="help is-danger">
+                          <span *ngIf="nameRef4.dirty && nameRef4.errors?.required">This field is required</span>&nbsp;
+                        </p></div>
+                      </div> 
+             
+              </div>
+                <div class="form-row">
+                 
+                    <div class="col-md-6 mb-3">
+                        <label for="validationDefault06">Full Bath</label>
+                        <input [class.is-danger]="nameRef5.dirty && nameRef5.invalid"
+                        [(ngModel)]="fullBaths"  #nameRef5="ngModel" name="fullBaths" type="number" class="form-control" id="validationDefault06" placeholder="FullBath" required/>
+                        <div>	<p class="help is-danger">
+                          <span *ngIf="nameRef5.dirty && nameRef5.errors?.required">This field is required</span>&nbsp;
+                        </p></div>
+                      </div>
+                  <div class="col-md-6 mb-3">
+                    <label for="validationDefault07">Beds</label>
+                    <input [class.is-danger]="nameRef6.dirty && nameRef6.invalid"
+                    [(ngModel)]="beds"  #nameRef6="ngModel" name="beds" type="number" class="form-control" id="validationDefault07" placeholder="Beds" required/>
+                    <div>	<p class="help is-danger">
+                      <span *ngIf="nameRef6.dirty && nameRef6.errors?.required">This field is required</span>&nbsp;
+                    </p></div>
+                  </div>
+                  <div class="col-md-3 mb-3">
+                    <label for="validationDefault08">Lot Size</label>
+                    <input [class.is-danger]="nameRef7.dirty && nameRef7.invalid"
+                    [(ngModel)]="lotSizeInSqft"  #nameRef7="ngModel" name="lotSizeInSqft" type="number" class="form-control" id="validationDefault08" placeholder="Lot Size" required/>
+                    <div>	<p class="help is-danger">
+                      <span *ngIf="nameRef7.dirty && nameRef7.errors?.required">This field is required</span>&nbsp;
+                    </p></div>
+                  </div>
+                  <div class="col-md-3 mb-3">
+                    <label for="validationDefault09">Year Built</label>
+                    <input [class.is-danger]="nameRef8.dirty && nameRef8.invalid"
+                    [(ngModel)]="yearBuilt"  #nameRef8="ngModel" name="yearBuilt" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false"  min="1970" max="2020" type="number" class="form-control" id="validationDefault09" placeholder="year Built" required pattern="\\d{4,4}"/>
+                    <div>	<p class="help is-danger">
+                      <span *ngIf="nameRef8.dirty && nameRef8.errors?.required">This field is required</span>&nbsp;
+                    </p></div>
+                  </div>
+                  <div class="col-md-3 mb-3">
+                    <label for="validationDefault10">Structure Remodel Year</label>
+                    <input [class.is-danger]="nameRef9.dirty && nameRef9.invalid"
+                    [(ngModel)]="structureRemodelYear"  #nameRef9="ngModel" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false" name="structureRemodelYear" min="1970" max="2020" type="number" class="form-control" id="validationDefault10" placeholder="remodel" required pattern="\\d{4,4}"/>
+                    <div>	<p class="help is-danger">
+                      <span *ngIf="nameRef9.dirty && nameRef9.errors?.required">This field is required</span>&nbsp;
+                    </p></div>
+                  </div>
+                  <div class="col-md-3 mb-3">
+                    <label for="validationDefault11">HOA</label>
+                    <input [class.is-danger]="nameRef10.dirty && nameRef10.invalid"
+                    [(ngModel)]="hoa"  #nameRef10="ngModel" name="hoa" type="number" class="form-control" id="validationDefault11" placeholder="$HOA" required/>
+                    <div>	<p class="help is-danger">
+                      <span *ngIf="nameRef10.dirty && nameRef10.errors?.required">This field is required</span>&nbsp;
+                    </p></div>
+                  </div>
+                  <div class="col-md-3 mb-3">
+                    <label for="validationDefault12">Address</label>
+                    <input [class.is-danger]="nameRef11.dirty && nameRef11.invalid"
+                    [(ngModel)]="address"  #nameRef11="ngModel" name="address" type="text" class="form-control" id="validationDefault12" placeholder="Address" required>
+                    <div>	<p class="help is-danger">
+                      <span *ngIf="nameRef11.dirty && nameRef11.errors?.required">This field is required</span>&nbsp;
+                    </p></div>
+                  </div>
+                  
+                   <div class="col-md-3 mb-3">
+                    <label for="validationDefault14">Location</label>
+                    <input (click)="getLocation()" [(ngModel)]="lat" [class.is-danger]="nameRef12.dirty && nameRef12.invalid"
+                      #nameRef12="ngModel" name="location" type="text" class="form-control" id="validationDefault14" placeholder="loctation" required/>
+                    <div>	<p class="help is-danger">
+                      <span *ngIf="nameRef12.dirty && nameRef12.errors?.required">This field is required</span>&nbsp;
+                    </p></div>
+                  </div>
+                 
+                  <div class="col-md-3 mb-3">
+                    <label for="validationDefault15">Contact</label>
+                    <input [class.is-danger]="nameRef13.dirty && nameRef13.invalid"
+                    [(ngModel)]="phoneNumber"  #nameRef13="ngModel" name="phoneNumber"  pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==10) return false" type="number" class="form-control" id="validationDefault15" placeholder="contact" required/>
+                    <div>	<p class="help is-danger">
+                      <span *ngIf="nameRef13.dirty && nameRef13.errors?.required">This field is required</span>&nbsp;
+                    </p></div>
+                  </div>
+                  <div class="col-md-3 mb-3">
+                    <label for="validationDefault16">Home description</label>
+                    <textarea [class.is-danger]="nameRef14.dirty && nameRef14.invalid"
+                    [(ngModel)]="description"  #nameRef14="ngModel" name="description" type="text" class="form-control" id="validationDefault16" placeholder="description" required></textarea>
+                    <div>	<p class="help is-danger">
+                      <span *ngIf="nameRef14.dirty && nameRef14.errors?.required">This field is required</span>&nbsp;
+                    </p></div>
+                  </div> 
+                  <div class="col-md-3 mb-3">
+                    <label for="validationDefault17">Locality</label>
+                    <input (click)="getLocation()" [(ngModel)]="locality" [class.is-danger]="nameRef17.dirty && nameRef17.invalid"
+                      #nameRef17="ngModel" name="locality" type="text" class="form-control" id="validationDefault17" placeholder="loctation" required/>
+                    <div>	<p class="help is-danger">
+                      <span *ngIf="nameRef17.dirty && nameRef17.errors?.required">This field is required</span>&nbsp;
+                    </p></div>
+                  </div>
+                 
+                </div>
+                <div class="form-group">
+                  <form >
+                    <label class="image-upload-container btn btn-bwm">
+                      <span>Select Image</span>
+                      <input #imageInput
+                             type="file"
+                             accept="image/*">
+                             
+                             <button class="btn btn-primary" (click)="processFile(imageInput)">Upload</button>
+                    </label>
+                  </form>                 
+                    
+                </div>
+                <button class="btn btn-primary" type="submit" id="submit"(tsSubmitIfValid)="onSubmit()">Submit form</button>
+              </form>
+              </div>
+              </div>
+              </div>
+    </section>    
+    
+   
+
+ 
+ </html>
