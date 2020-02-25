@@ -1,20 +1,21 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" >
   <head>
     <meta charset = "UTF-8" />
 </head>
 <h5 class="card-header info-color white-text text-center py-4">
   <strong>Register your Home with Willow</strong>
 </h5>
-        <section>
-          <div class="card">
-            <div class="card-body px-lg-5 pt-0">
+<div class="jumbotron"  >
+  <div class="container" >
+        <section >
+          
 
-        <div style="margin-top:5;" class="card-header">
-            <form  #homeRegister="ngForm" (ngSubmit)="onSubmit(homeRegister)" novalidate="novalidate">
+        <div style="margin-top:5;" class="card-header-form" style="background-color: #007bff4a;/* overflow: auto; */border: #1d7786a6;">
+            <form #homeRegister="ngForm" (ngSubmit)="homeRegister.form.valid && onSubmit(homeRegister)" novalidate >
                 <div class="form-row" >
-                  <div class="col-md-6 mb-3">
-                    <div class="form-group">
+                  <div class="col-md-3 mb-3">
+                    
                         <label for="sel1">Home-Type</label>
                         <select [(value)]="option" (Onchange)="getSeletedOption()" class="form-control" id="sel1">
                           <option *ngFor="let option of homeType" [value]="option">{{option}}</option>
@@ -22,146 +23,158 @@
                         </select>
 
                        
-                      </div>               
+                                    
                        </div>
+                    
+
+                    <div class="col-md-3 mb-3">
+                      <label for="validationDefault01">Price</label>
+                      <input class="form-control" name="price" type="number"  [(ngModel)]="model.price" #price="ngModel" [ngClass]="{ 'is-invalid': homeRegister.submitted && price.invalid }" required />
+                      <div *ngIf="homeRegister.submitted && price.invalid" class="invalid-feedback">
+                          <div *ngIf="price.errors.required">Price is required</div>
+                      </div>
+                  </div>
                        
-                       <div class="col-md-6 mb-3">
-                        <label for="validationDefault01">Price</label>
-                        <input [class.is-danger]="nameRef.dirty && nameRef.invalid"
-                        [(ngModel)]="price"  #nameRef="ngModel" name="price" type="number" class="form-control" id="validationDefault01" placeholder="price"  required>
-                        <div>	<p class="help is-danger">
-                          <span *ngIf="nameRef.dirty && nameRef.errors?.required">This field is required</span>&nbsp;
-                        </p></div>
-                      </div>
-                       <div class="col-md-3 mb-3">
-                        <label for="validationDefault02">ZipCode</label>
-                        <input [class.is-danger]="nameRef1.dirty && nameRef1.invalid"
-                        [(ngModel)]="zipcode"  #nameRef1="ngModel"  pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==6) return false" name="zipcode" type="number" class="form-control" id="validationDefault02" placeholder="Zip Code" required/>
-                        <div>	<p class="help is-danger">
-                          <span *ngIf="nameRef1.dirty && nameRef1.errors?.required">This field is required</span>&nbsp;
-                        </p></div>
-                      </div>
+                  <div class="col-md-3 mb-3">
+                    <label for="validationDefault02">ZipCode</label>
+                    <input class="form-control" name="zipcode" type="number"  onKeyPress="if(this.value.length==6) return false"  [(ngModel)]="model.zipcode" #zipcode="ngModel" [ngClass]="{ 'is-invalid': homeRegister.submitted && zipcode.invalid }" required />
+                    <div *ngIf="homeRegister.submitted && zipcode.invalid" class="invalid-feedback">
+                        <div *ngIf="zipcode.errors.required">zipcode is required</div>
+                    </div>
+                </div>
+                    
+                    
+                </div>
+                     <div class="form-row" >
                       <div class="col-md-3 mb-3">
-                        <label for="validationDefault03">Garage</label>
-                        <input [class.is-danger]="nameRef2.dirty && nameRef2.invalid"
-                        [(ngModel)]="garageSqft"  #nameRef2="ngModel" name="garageSqft" type="number" class="form-control" id="validationDefault03" placeholder="Garage" required/>
-                        <div>	<p class="help is-danger">
-                          <span *ngIf="nameRef2.dirty && nameRef2.errors?.required">This field is required</span>&nbsp;
-                        </p></div>
-                      </div>
-                      <div class="col-md-3 mb-3">
-                        <label for="validationDefault04">Basement Sq Ft</label>
-                        <input [class.is-danger]="nameRef3.dirty && nameRef3.invalid"
-                        [(ngModel)]="basementSqft"  #nameRef3="ngModel" name="basementSqft" type="number" class="form-control" id="validationDefault04" placeholder="basement" required/>
-                        <div>	<p class="help is-danger">
-                          <span *ngIf="nameRef3.dirty && nameRef3.errors?.required">This field is required</span>&nbsp;
-                        </p></div>
-                      </div>
+                    <label for="validationDefault03">Garage</label>
+                    <input class="form-control" name="garageSqft" type="number"   [(ngModel)]="model.garageSqft" #garageSqft="ngModel" [ngClass]="{ 'is-invalid': homeRegister.submitted && garageSqft.invalid }" required />
+                    <div *ngIf="homeRegister.submitted && garageSqft.invalid" class="invalid-feedback">
+                        <div *ngIf="garageSqft.errors.required">Garage Value is required</div>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-3">
+                  <label for="validationDefault04">Basement Sq Ft</label>
+                  <input class="form-control" name="basementSqft" type="number"   [(ngModel)]="model.basementSqft" #basementSqft="ngModel" [ngClass]="{ 'is-invalid': homeRegister.submitted && basementSqft.invalid }" required />
+                  <div *ngIf="homeRegister.submitted && basementSqft.invalid" class="invalid-feedback">
+                      <div *ngIf="basementSqft.errors.required">Basement Value is required</div>
+                  </div>
+              </div>
+                     
                       <div class="col-md-3 mb-3">
                         <label for="validationDefault05">Finished Sq Ft</label>
-                        <input [class.is-danger]="nameRef4.dirty && nameRef4.invalid"
-                        [(ngModel)]="finishedSqft"  #nameRef4="ngModel" name="finishedSqft" type="number" class="form-control" id="validationDefault05" placeholder="finished" required/>
-                        <div>	<p class="help is-danger">
-                          <span *ngIf="nameRef4.dirty && nameRef4.errors?.required">This field is required</span>&nbsp;
-                        </p></div>
+                        <input class="form-control" name="finishedSqft" type="number"   [(ngModel)]="model.finishedSqft" #finishedSqft="ngModel" [ngClass]="{ 'is-invalid': homeRegister.submitted && finishedSqft.invalid }" required />
+                  <div *ngIf="homeRegister.submitted && finishedSqft.invalid" class="invalid-feedback">
+                      <div *ngIf="finishedSqft.errors.required">Finished Sq Ft is required</div>
+                  </div>
                       </div> 
-             
-              </div>
-                <div class="form-row">
-                 
-                    <div class="col-md-6 mb-3">
-                        <label for="validationDefault06">Full Bath</label>
-                        <input [class.is-danger]="nameRef5.dirty && nameRef5.invalid"
-                        [(ngModel)]="fullBaths"  #nameRef5="ngModel" name="fullBaths" type="number" class="form-control" id="validationDefault06" placeholder="FullBath" required/>
-                        <div>	<p class="help is-danger">
-                          <span *ngIf="nameRef5.dirty && nameRef5.errors?.required">This field is required</span>&nbsp;
-                        </p></div>
-                      </div>
-                  <div class="col-md-6 mb-3">
-                    <label for="validationDefault07">Beds</label>
-                    <input [class.is-danger]="nameRef6.dirty && nameRef6.invalid"
-                    [(ngModel)]="beds"  #nameRef6="ngModel" name="beds" type="number" class="form-control" id="validationDefault07" placeholder="Beds" required/>
-                    <div>	<p class="help is-danger">
-                      <span *ngIf="nameRef6.dirty && nameRef6.errors?.required">This field is required</span>&nbsp;
-                    </p></div>
-                  </div>
-                  <div class="col-md-3 mb-3">
-                    <label for="validationDefault08">Lot Size</label>
-                    <input [class.is-danger]="nameRef7.dirty && nameRef7.invalid"
-                    [(ngModel)]="lotSizeInSqft"  #nameRef7="ngModel" name="lotSizeInSqft" type="number" class="form-control" id="validationDefault08" placeholder="Lot Size" required/>
-                    <div>	<p class="help is-danger">
-                      <span *ngIf="nameRef7.dirty && nameRef7.errors?.required">This field is required</span>&nbsp;
-                    </p></div>
-                  </div>
-                  <div class="col-md-3 mb-3">
-                    <label for="validationDefault09">Year Built</label>
-                    <input [class.is-danger]="nameRef8.dirty && nameRef8.invalid"
-                    [(ngModel)]="yearBuilt"  #nameRef8="ngModel" name="yearBuilt" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false"  min="1970" max="2020" type="number" class="form-control" id="validationDefault09" placeholder="year Built" required pattern="\\d{4,4}"/>
-                    <div>	<p class="help is-danger">
-                      <span *ngIf="nameRef8.dirty && nameRef8.errors?.required">This field is required</span>&nbsp;
-                    </p></div>
-                  </div>
-                  <div class="col-md-3 mb-3">
-                    <label for="validationDefault10">Structure Remodel Year</label>
-                    <input [class.is-danger]="nameRef9.dirty && nameRef9.invalid"
-                    [(ngModel)]="structureRemodelYear"  #nameRef9="ngModel" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false" name="structureRemodelYear" min="1970" max="2020" type="number" class="form-control" id="validationDefault10" placeholder="remodel" required pattern="\\d{4,4}"/>
-                    <div>	<p class="help is-danger">
-                      <span *ngIf="nameRef9.dirty && nameRef9.errors?.required">This field is required</span>&nbsp;
-                    </p></div>
-                  </div>
-                  <div class="col-md-3 mb-3">
-                    <label for="validationDefault11">HOA</label>
-                    <input [class.is-danger]="nameRef10.dirty && nameRef10.invalid"
-                    [(ngModel)]="hoa"  #nameRef10="ngModel" name="hoa" type="number" class="form-control" id="validationDefault11" placeholder="$HOA" required/>
-                    <div>	<p class="help is-danger">
-                      <span *ngIf="nameRef10.dirty && nameRef10.errors?.required">This field is required</span>&nbsp;
-                    </p></div>
-                  </div>
-                  <div class="col-md-3 mb-3">
-                    <label for="validationDefault12">Address</label>
-                    <input [class.is-danger]="nameRef11.dirty && nameRef11.invalid"
-                    [(ngModel)]="address"  #nameRef11="ngModel" name="address" type="text" class="form-control" id="validationDefault12" placeholder="Address" required>
-                    <div>	<p class="help is-danger">
-                      <span *ngIf="nameRef11.dirty && nameRef11.errors?.required">This field is required</span>&nbsp;
-                    </p></div>
-                  </div>
-                  
-                   <div class="col-md-3 mb-3">
-                    <label for="validationDefault14">Location</label>
-                    <input (click)="getLocation()" [(ngModel)]="lat" [class.is-danger]="nameRef12.dirty && nameRef12.invalid"
-                      #nameRef12="ngModel" name="location" type="text" class="form-control" id="validationDefault14" placeholder="loctation" required/>
-                    <div>	<p class="help is-danger">
-                      <span *ngIf="nameRef12.dirty && nameRef12.errors?.required">This field is required</span>&nbsp;
-                    </p></div>
-                  </div>
-                 
-                  <div class="col-md-3 mb-3">
-                    <label for="validationDefault15">Contact</label>
-                    <input [class.is-danger]="nameRef13.dirty && nameRef13.invalid"
-                    [(ngModel)]="phoneNumber"  #nameRef13="ngModel" name="phoneNumber"  pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==10) return false" type="number" class="form-control" id="validationDefault15" placeholder="contact" required/>
-                    <div>	<p class="help is-danger">
-                      <span *ngIf="nameRef13.dirty && nameRef13.errors?.required">This field is required</span>&nbsp;
-                    </p></div>
-                  </div>
-                  <div class="col-md-3 mb-3">
-                    <label for="validationDefault16">Home description</label>
-                    <textarea [class.is-danger]="nameRef14.dirty && nameRef14.invalid"
-                    [(ngModel)]="description"  #nameRef14="ngModel" name="description" type="text" class="form-control" id="validationDefault16" placeholder="description" required></textarea>
-                    <div>	<p class="help is-danger">
-                      <span *ngIf="nameRef14.dirty && nameRef14.errors?.required">This field is required</span>&nbsp;
-                    </p></div>
-                  </div> 
-                  <div class="col-md-3 mb-3">
-                    <label for="validationDefault17">Locality</label>
-                    <input (click)="getLocation()" [(ngModel)]="locality" [class.is-danger]="nameRef17.dirty && nameRef17.invalid"
-                      #nameRef17="ngModel" name="locality" type="text" class="form-control" id="validationDefault17" placeholder="loctation" required/>
-                    <div>	<p class="help is-danger">
-                      <span *ngIf="nameRef17.dirty && nameRef17.errors?.required">This field is required</span>&nbsp;
-                    </p></div>
-                  </div>
-                 
+                      </div> 
+
+
+                       <div class="form-row" >
+
+                        <div class="col-md-3 mb-3">
+                          <label for="validationDefault06">FullBath</label>
+                          <input class="form-control" name="fullBaths" type="number"   [(ngModel)]="model.fullBaths" #fullBaths="ngModel" [ngClass]="{ 'is-invalid': homeRegister.submitted && fullBaths.invalid }" required />
+                    <div *ngIf="homeRegister.submitted && fullBaths.invalid" class="invalid-feedback">
+                        <div *ngIf="fullBaths.errors.required">FullBath is required</div>
+                    </div>
+                        </div> 
+
+                        <div class="col-md-3 mb-3">
+                          <label for="validationDefault07">Beds</label>
+                          <input class="form-control" name="beds" type="number"   [(ngModel)]="model.beds" #beds="ngModel" [ngClass]="{ 'is-invalid': homeRegister.submitted && beds.invalid }" required />
+                    <div *ngIf="homeRegister.submitted && beds.invalid" class="invalid-feedback">
+                        <div *ngIf="beds.errors.required">Bed is required</div>
+                    </div>
+                        </div> 
+
+                        <div class="col-md-3 mb-3">
+                          <label for="validationDefault08">Lot size</label>
+                          <input class="form-control" name="lotSizeInSqft" type="number"   [(ngModel)]="model.lotSizeInSqft" #lotSizeInSqft="ngModel" [ngClass]="{ 'is-invalid': homeRegister.submitted && lotSizeInSqft.invalid }" required />
+                    <div *ngIf="homeRegister.submitted && lotSizeInSqft.invalid" class="invalid-feedback">
+                        <div *ngIf="lotSizeInSqft.errors.required">Lot Size is required</div>
+                    </div>
+                        </div> 
+                      
+                      </div> 
+                   <div class="form-row" >
+                    <div class="col-md-3 mb-3">
+                      <label for="validationDefault09">Year Built</label>
+                      <input class="form-control" name="yearBuilt" type="number"  onKeyPress="if(this.value.length==4) return false" min="1970" max="2020"  [(ngModel)]="model.yearBuilt" #yearBuilt="ngModel" [ngClass]="{ 'is-invalid': homeRegister.submitted && yearBuilt.invalid }" required />
+                <div *ngIf="homeRegister.submitted && yearBuilt.invalid" class="invalid-feedback">
+                    <div *ngIf="yearBuilt.errors.required">Year Built is required</div>
                 </div>
-                <div class="form-group">
+                    </div> 
+
+                    <div class="col-md-3 mb-3">
+                      <label for="validationDefault10">Structure Remodel Year</label>
+                      <input class="form-control" name="structureRemodelYear" type="number"  onKeyPress="if(this.value.length==4) return false" min="1970" max="2020"  [(ngModel)]="model.structureRemodelYear" #structureRemodelYear="ngModel" [ngClass]="{ 'is-invalid': homeRegister.submitted && structureRemodelYear.invalid }" required />
+                <div *ngIf="homeRegister.submitted && structureRemodelYear.invalid" class="invalid-feedback">
+                    <div *ngIf="structureRemodelYear.errors.required">Remodel Year is required</div>
+                </div>
+                    </div> 
+
+                    <div class="col-md-3 mb-3">
+                      <label for="validationDefault11">HOA</label>
+                      <input class="form-control" name="hoa" type="number" [(ngModel)]="model.hoa" #hoa="ngModel" [ngClass]="{ 'is-invalid': homeRegister.submitted && hoa.invalid }" required />
+                <div *ngIf="homeRegister.submitted && hoa.invalid" class="invalid-feedback">
+                    <div *ngIf="hoa.errors.required">HOA is required</div>
+                </div>
+                    </div> 
+
+
+      
+                  </div> 
+                   <div class="form-row" >
+
+                    <div class="col-md-3 mb-3">
+                      <label for="validationDefault12">Address</label>
+                      <input class="form-control" name="address" type="text"  [(ngModel)]="model.address" #address="ngModel" [ngClass]="{ 'is-invalid': homeRegister.submitted && address.invalid }" required />
+                <div *ngIf="homeRegister.submitted && address.invalid" class="invalid-feedback">
+                    <div *ngIf="address.errors.required">Address required</div>
+                </div>
+                    </div> 
+
+                    <div class="col-md-3 mb-3">
+                      <label for="validationDefault13">Location</label>
+                      <input (click)="getLocation()" class="form-control" name="location" type="text"  [(ngModel)]="model.location" #location="ngModel" [ngClass]="{ 'is-invalid': homeRegister.submitted && location.invalid }" required />
+                <div *ngIf="homeRegister.submitted && location.invalid" class="invalid-feedback">
+                    <div *ngIf="location.errors.required">Location required</div>
+                </div>
+                    </div> 
+
+                    <div class="col-md-3 mb-3">
+                      <label for="validationDefault14">Contact</label>
+                      <input class="form-control" name="phoneNumber" type="number" [(ngModel)]="model.phoneNumber" onKeyPress="if(this.value.length>10) return false"  #phoneNumber="ngModel" [ngClass]="{ 'is-invalid': homeRegister.submitted && phoneNumber.invalid }" required />
+                <div *ngIf="homeRegister.submitted && phoneNumber.invalid" class="invalid-feedback">
+                    <div *ngIf="phoneNumber.errors.required">Contact is required</div>
+                </div>
+                    </div> 
+                    
+               
+                  </div> 
+                   <div class="form-row" >
+
+                    <div class="col-md-3 mb-3">
+                      <label for="validationDefault15">Home Description</label>
+                      <textarea  class="form-control" name="description" type="text"  [(ngModel)]="model.description" #description="ngModel" [ngClass]="{ 'is-invalid': homeRegister.submitted && description.invalid }" required ></textarea>
+                <div *ngIf="homeRegister.submitted && description.invalid" class="invalid-feedback">
+                    <div *ngIf="description.errors.required">Description required</div>
+                </div>
+                    </div> 
+
+               
+                    <div class="col-md-3 mb-3">
+                      <label for="validationDefault16">Locality</label>
+                      <input (click)="getLocation()" class="form-control" name="locality" type="text"  [(ngModel)]="model.locality" #locality="ngModel" [ngClass]="{ 'is-invalid': homeRegister.submitted && locality.invalid }" required />
+                <div *ngIf="homeRegister.submitted && locality.invalid" class="invalid-feedback">
+                    <div *ngIf="locality.errors.required">Locality required</div>
+                </div>
+                    </div> 
+                 
+                
+                <div class="col-md-3 mb-3">
                   <form >
                     <label class="image-upload-container btn btn-bwm">
                       <span>Select Image</span>
@@ -174,14 +187,33 @@
                   </form>                 
                     
                 </div>
-                <button class="btn btn-primary" type="submit" id="submit"(tsSubmitIfValid)="onSubmit()">Submit form</button>
+              </div> 
+                <button class="btn btn-primary"   type="submit" id="submit"(tsSubmitIfValid)="onSubmit()">Submit form</button>
               </form>
               </div>
-              </div>
-              </div>
+              
     </section>    
-    
-   
+    </div>
+    </div>
+   <!-- Modal -->
+<!-- <div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog"> -->
+
+    <!-- Modal content-->
+    <!-- <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p style="text-align: center;"><strong>Bingo !!! Form Submitted...</strong></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div> -->
 
  
  </html>

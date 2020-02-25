@@ -2,3 +2,19 @@
     background-color: #33b5e540;
     margin-top: 14px;
 }
+
+.card-header-form{
+    padding: 2em 0rem 3em 14em;
+    margin-bottom: 0;
+    background-color: rgba(0,0,0,.03);
+    border-bottom: 1px solid rgba(0,0,0,.125);
+
+}
+
+.form-row {
+    display: -webkit-box;
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -137px;
+    margin-left: -77px;
+}

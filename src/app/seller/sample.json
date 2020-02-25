@@ -1,0 +1,30 @@
+{
+    "basementSqft": 0,
+    "date": 1582569493180,
+    "address": "14027 Lake City Way NE, Apt E527",
+    "lng": -122,
+    "garageSqft": 0,
+    "structureRemodelYear": 0,
+    "locality": "Seattle",
+    "description": "Sparkling new, amazing duplex in the Martha Lake/Mill Creek area. Just completed, this large duplex is a great opportunity for the discerning investor or perfect for an owner occupant. Modern finishes, spacious layout, two very bright and happy homes. Amazing kitchens, grassy yards, & attached 2-car garages tucked away on a quiet street. Fantastic access to both I-5 & I-405. A very rare, brand new multi-family opportunity. No HOA!",
+    "yearBuilt": 0,
+    "zipcode": "98125",
+    "phoneNumber": "8505709533",
+    "houseInfo": null,
+    "price": 0,
+    "finishedSqft": 0,
+    "lotSizeInSqft": 0,
+    "id": "5c95502e-8a1a-464e-b186-76076ddd8508",
+    "fullBaths": 0,
+    "hoa": 0,
+    "beds": 0,
+    "lat": 47,
+    "imageIds": [
+        "49604998-621d-4436-bbf0-7e59edcfc1d0"
+    ],
+    "_rid": "02Y-ANWAtlI1AAAAAAAAAA==",
+    "_self": "dbs/02Y-AA==/colls/02Y-ANWAtlI=/docs/02Y-ANWAtlI1AAAAAAAAAA==/",
+    "_etag": "\"6e00b00c-0000-0700-0000-5e5418150000\"",
+    "_attachments": "attachments/",
+    "_ts": 1582569493
+}

@@ -8,7 +8,9 @@ import { SellerComponent } from './seller/seller.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http'; 
 import {MatAutocompleteModule} from '@angular/material';
-import{ AgmCoreModule} from '@agm/core';
+import{ AgmCoreModule, CircleManager,GoogleMapsAPIWrapper} from '@agm/core';
+import { MapsAPILoader, AgmMap,AgmMarker,AgmCircle } from '@agm/core';
+
 import { MatToolbarModule,
   MatIconModule,
   MatCardModule,
@@ -30,8 +32,8 @@ import { ModalComponent } from './modal/modal.component';
     BuyerComponent,
     SellerComponent,
     EmojiDirective,
-    ModalComponent
-   // AgmCoreModule.forRoot({apiKey:"AIzaSyDyK6cI18gFAtp036c2yHjqis8XKG6583U"}),
+    ModalComponent,
+ 
     
   
 
@@ -51,14 +53,18 @@ import { ModalComponent } from './modal/modal.component';
     MatCardModule,
     MatInputModule,
     MatFormFieldModule,
+   
+    
+    
     MatProgressSpinnerModule,
     MatGoogleMapsAutocompleteModule,
+    
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyAru7pbXnxZfXRWSY9HBZm3LlvLgrmso9A',
+      apiKey: 'AIzaSyDeeXSRb_yBsk7t6phbcxKFpVN5GwxteRw',
       libraries: ['places']
     }),
       ],
-  providers: [],
+  providers: [CircleManager,GoogleMapsAPIWrapper],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
