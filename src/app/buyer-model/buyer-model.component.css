@@ -1,0 +1,42 @@
+.mat-dialog-container-1{
+    
+    width: 80%;
+    height: 85%;
+    margin-left: 109px;
+    margin-top: 64px;
+}
+
+
+.scrollbar
+{
+ 
+  height: 650px;
+  background: #F5F5F5;
+
+}
+
+.force-overflow1
+{
+  min-height: 450px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+#style-2::-webkit-scrollbar-track
+{
+  border-radius: 10px;
+  background-color: #F5F5F5;
+}
+
+#style-2::-webkit-scrollbar
+{
+  width: 12px;
+  background-color: #F5F5F5;
+}
+
+#style-2::-webkit-scrollbar-thumb
+{
+  border-radius: 10px;
+  background-color: #483d8b;
+}
+

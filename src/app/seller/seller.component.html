@@ -4,15 +4,19 @@
     <meta charset = "UTF-8" />
 </head>
 <h5 class="card-header info-color white-text text-center py-4">
-  <strong>Register your Home with Willow</strong>
+  <strong>Register your Home with Willow</strong> 
+
 </h5>
+<!-- <p style="float: right;
+margin-top: -27px;">{{ user.email }}</p> -->
+
 <div class="jumbotron"  >
   <div class="container" >
         <section >
           
 
         <div style="margin-top:5;" class="card-header-form" style="background-color: #007bff4a;/* overflow: auto; */border: #1d7786a6;">
-            <form #homeRegister="ngForm" (ngSubmit)="homeRegister.form.valid && onSubmit(homeRegister)" novalidate >
+            <form #homeRegister="ngForm" (ngSubmit)="homeRegister.form.valid && onSubmit(homeRegister)" novalidate autocomplete="on"> 
                 <div class="form-row" >
                   <div class="col-md-3 mb-3">
                     
@@ -109,10 +113,10 @@
 
                     <div class="col-md-3 mb-3">
                       <label for="validationDefault10">Structure Remodel Year</label>
-                      <input class="form-control" name="structureRemodelYear" type="number"  onKeyPress="if(this.value.length==4) return false" min="1970" max="2020"  [(ngModel)]="model.structureRemodelYear" #structureRemodelYear="ngModel" [ngClass]="{ 'is-invalid': homeRegister.submitted && structureRemodelYear.invalid }" required />
-                <div *ngIf="homeRegister.submitted && structureRemodelYear.invalid" class="invalid-feedback">
+                      <input class="form-control" name="structureRemodelYear" type="number"  onKeyPress="if(this.value.length==4) return false" min="1970" max="2020"  [(ngModel)]="model.structureRemodelYear" #structureRemodelYear="ngModel"  required />
+                <!-- <div *ngIf="homeRegister.submitted && structureRemodelYear.invalid" class="invalid-feedback">
                     <div *ngIf="structureRemodelYear.errors.required">Remodel Year is required</div>
-                </div>
+                </div> -->
                     </div> 
 
                     <div class="col-md-3 mb-3">

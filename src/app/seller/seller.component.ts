@@ -2,6 +2,9 @@ import { Component, OnInit,ViewChild } from '@angular/core';
 import { FormsModule,Validators,NgForm } from '@angular/forms';
 import { PostService } from '../services/post.service';
 import { ImageSnippet } from '../buyer/models/ImageSnippet';
+import { AuthService } from "angularx-social-login";
+import { GoogleLoginProvider } from "angularx-social-login";
+import { SocialUser } from "angularx-social-login";
 import { v4 as uuid } from 'uuid';
 import{EmojiDirective} from'../emoji.directive';
 @Component({
@@ -14,6 +17,8 @@ import{EmojiDirective} from'../emoji.directive';
 export class SellerComponent implements OnInit {
   data:any;
   model: any = {};
+  private user: SocialUser;
+  private loggedIn: boolean;
 
  formData:any;
  lat:any
@@ -24,7 +29,7 @@ export class SellerComponent implements OnInit {
  public optionEntered:boolean = false;
  public option:string;
 
-  constructor(private ps:PostService) { }
+  constructor(private ps:PostService,private authService: AuthService) { }
 
 
 
@@ -32,6 +37,14 @@ export class SellerComponent implements OnInit {
   ngOnInit() {
     this.id=uuid.v4();
     console.log(this.id);
+
+    this.authService.authState.subscribe((user) => {
+      this.user = user;
+      this.loggedIn = (user != null);
+    });
+
+
+
   }
   
   processFile(imageInput: any) {
@@ -68,18 +81,23 @@ private getSeletedOption(){
 
   onSubmit(homeRegister) {
 //Post the form data to the database
-
+console.log("check value")
 this.formData = homeRegister.value;
-console.log(homeRegister.value)
-alert('Bingo!! Your form is submitted Successfully :-)')
+console.log("my form Value")
+console.log(this.formData);
+
 
 homeRegister.value.id = this.id;
 homeRegister.value.lat = this.lat;
 homeRegister.value.lng = this.lng;
+
 this.data = this.ps.postData(homeRegister.value).subscribe((val)=>{
   console.log(val)
+  console.log("Success")
+alert('Bingo!! Your form is submitted Successfully :-)')
 });
-//console.log(this.data)
+
+
    
   }
   
