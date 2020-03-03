@@ -43,6 +43,7 @@ export class BuyerComponent implements OnInit {
   public longitude: number;
   address: string;
   formData:any;
+  mysearchplace:any;
 
   private geoCoder;
   // Radius
@@ -53,7 +54,8 @@ export class BuyerComponent implements OnInit {
   filteredProducts = [];
   filterByZip =[];
   filterByCity=[];
-  markers: marker[] = []
+  markers: marker[] = [];
+  myAddress:any=[];
   //markers: any[] = [{'lat': 7.289574289959695, 'lng': 80.63236355781555,},{ 'lat': 7.468432329097338, 'lng': 80.04151582717896,  }];
 
   public cards:string[];
@@ -438,6 +440,9 @@ export class BuyerComponent implements OnInit {
       this.ngZone.run(() => {
         //get the place result
         let place: google.maps.places.PlaceResult = autocomplete.getPlace();
+        console.log("myPlace"+ (JSON.stringify(place)));// searched address
+        this.mysearchplace= place.formatted_address;
+        console.log("ARE YOU SEARCHING "+this.mysearchplace);
 
         //verify result
         if (place.geometry === undefined || place.geometry === null) {
@@ -529,8 +534,18 @@ export class BuyerComponent implements OnInit {
 
   getAddress(latitude, longitude) {
     this.geoCoder.geocode({ 'location': { lat: latitude, lng: longitude } }, (results, status) => {
-      console.log(results);
-      console.log(status);
+      console.log("array of address" + JSON.stringify(results));
+      for(let i=1 ;i<20;i++){
+
+        this.myAddress.push(
+          {
+            formatted_address: results[i].formatted_address,
+          }
+        );
+
+
+      }
+      console.log(status)
       if (status === 'OK') {
         if (results[0]) {
           this.zoom = 12;
@@ -585,7 +600,12 @@ export class BuyerComponent implements OnInit {
  
 
 
+searchByAddress(){
+  console.log("here")
+console.log(this.mysearchplace);
 
+
+}
 
   
     

@@ -11,7 +11,9 @@ const routes: Routes = [
   {path:'buyer',component:BuyerComponent},
   {path:'seller',component:SellerComponent},
   {path:'buyer/buyerdetails',component:ModalComponent},
-  {path:'buyermodel',component:BuyerModelComponent}
+  {path:'buyermodel',component:BuyerModelComponent},
+  { path: '', redirectTo: '/buyer', pathMatch: 'full' }
+
 
   
 ];
