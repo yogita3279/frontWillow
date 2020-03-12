@@ -8,7 +8,7 @@ import { Condition } from '../buyer/models/Condition';
 })
 export class PostService {
    url:string="http://localhost:8080/sellers/properties";
-   postUrl:string="http://localhost:8080/sellers/create";
+   postUrl:string="http://localhost:4000/api/create";
    imageUploadUrl:string="http://localhost:8080/image/?id="
    selectedHouseInformation:{};
   constructor(private HttpClient:HttpClient) 
